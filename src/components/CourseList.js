@@ -10,6 +10,7 @@ function CourseList(props) {
           <th>Title</th>
           <th>Author</th>
           <th>Category</th>
+          <th>&nbsp;</th>
         </tr>
       </thead>
       <tbody>
@@ -18,6 +19,7 @@ function CourseList(props) {
             <td><Link to={`/course/${course.slug}`}>{ course.title }</Link></td>
             <td>{ course.authorId }</td>
             <td>{ course.category }</td>
+            <td><button className="btn btn-outline-danger" onClick={() => props.deleteCourse(course.id)}>Delete</button></td>
           </tr>
         ))}
       </tbody>
@@ -31,7 +33,8 @@ CourseList.propTypes = {
     title: PropTypes.string.isRequired,
     authorId: PropTypes.number.isRequired,
     category: PropTypes.string.isRequired,
-  })).isRequired
+  })).isRequired,
+  deleteCourse: PropTypes.func,
 }
 
 CourseList.defaultProps = {
